@@ -1,0 +1,212 @@
+
+
+                           HABLA Versi¢n 3.30
+
+           MODIFICACIONES Y MEJORAS RESPECTO A LA VERSION 3.01
+
+                          Noviembre de 1.996
+
+
+
+   IMPORTANTE: Lea detenidamente este texto antes de utilizar la nueva versi¢n
+de HABLA.
+
+
+   1.- Aunque en la versi¢n anterior parec¡a subsanado el problema, los
+pitidos de aviso de bloqueo may£sculas, bloqueo num‚rico, etc no se
+escuchaban o se escuchaban muy poco dependiendo de la velocidad del
+ordenador. Ahora, esto se tiene en cuenta, de forma que se pueden
+escuchar en cualquier m quina. Tambi‚n se ha cambiado el tipo de pitido,
+para poder distinguir bien entre ellos. El pitido que se produc¡a en la
+carga de Habla tambi‚n se ha eliminado.
+
+   2.- Teclado externo para Reflection. 
+
+   A partir de la versi¢n 2.12 de Reflection podemos utilizar tanto el
+teclado externo del Braille Hablado como el del PC Hablado. Se ha
+mejorado la gesti¢n del teclado externo para Braille Hablado, que no
+funcionaba correctamente en algunos casos. Ahora, el teclado puede no
+funcionar si cargamos el Habla y encendemos luego el Braille Hablado,
+pero si entramos y salimos de revisi¢n se arregla el problema.
+
+   Tambi‚n se ha a¤adido una combinaci¢n para el teclado externo que es
+el COR-4,5 que reproduce la pulsaci¢n de la tecla Intro del teclado
+num‚rico. Con esto podemos validar las pantallas de Reflection.
+
+   Tanto para Braille Hablado como para PC Hablado s¢lo se pueden
+utilizar COM1 ¢ COM2 (en Ciber hasta COM4).
+
+   3.- Por fin los ficheros de configuraci¢n son compatibles entre estas
+5 versiones. Ahora se podr n intercambiar los ficheros entre usuarios aunque
+no utilicen la misma s¡ntesis.
+
+   Los ficheros de configuraci¢n anteriores NO SON COMPATIBLES con esta
+nueva versi¢n.
+
+   4.- Mejorada la grabaci¢n de ficheros de configuraci¢n.
+
+   Adem s del CONTROL-F10 en revisi¢n y de la "g" en la l¡nea de
+comandos, se ha a¤adido la funci¢n de "grabaci¢n r pida" con ALT-F10 en
+revisi¢n. Esta funci¢n permite ahorrar tiempo en la grabaci¢n ya que no
+nos pide el nombre del fichero a grabar sino que utiliza el del que
+estemos utilizando. Es decir, si hemos cargado Habla y no hemos
+recuperado ning£n fichero todav¡a y utilizamos ALT-F10, autom ticamente
+se crear  el fichero CONFI.HAB en el directorio ra¡z. Si resulta que
+hemos recuperado alg£n fichero, bien desde revisi¢n, bien desde la l¡nea
+de comandos con "r", utilizar  el nombre del fichero que pusimos al
+recuperar. 
+
+   Por ejemplo, si nos interesa tener un s¢lo fichero de configuraci¢n en
+el directorio Habla, lo recuperaremos con el PATH completo (Habla r
+C:\habla\confi.hab) de manera que cada vez que queramos actualizarlo,
+estemos trabajando en cualquier otra unidad o directorio, sobrar  con
+pulsar ALT-F10 en revisi¢n. Con esta funci¢n podremos evitar tener
+ficheros de configuraci¢n repartidos por todo el disco.
+
+   Actualmente, los ficheros de configuraci¢n ocupan 4350 Bytes.
+    
+   5.- Servicio de verbalizaci¢n para otras aplicaciones.
+
+   Habla incluye un servicio de interrupci¢n que le permite a cualquier
+aplicaci¢n hacer una llamada para verbalizar el texto que se desee. Con
+esto se podr n hacer aplicaciones para cualquier s¡ntesis sin tener en
+cuenta el tipo de ‚sta ya que es Habla el que se encargar  de verbalizar
+el mensaje. Los usuarios podr n utilizar esta funci¢n para sus propios
+programas.
+    
+   Los datos para hacer una llamada y verbalizar un texto son
+los siguientes:
+
+   Llamada a la Interrupci¢n 0FAH con los par metros siguientes:
+
+        AX = 0000h
+        BX = N§ Bytes del mensaje.
+        DS:DX = Direcci¢n del mensaje a sintetizar.
+
+   La rutina devuelve:
+   
+        AX=1111h mensaje enviado correctamente.
+        AX=????h error de env¡o o Habla no cargado.
+                        
+   6.- Gesti¢n de mensajes.
+
+   Se ha a¤adido una gesti¢n de mensajes definibles por el usuario que
+nos permite definir hasta 10 mensajes (de 0 a 9) que m s tarde se pueden
+utilizar para ser verbalizados por las l¡neas vivas o por los caracteres
+vivos (que se explican m s adelante).
+
+   Los mensajes se definen con ALT-F5 en revisi¢n, que nos pide el n£mero
+de mensaje (de 0 a 9), y a continuaci¢n tecleamos el mensaje en s¡ (de
+hasta 30 caracteres) y pulsamos Intro. Si damos Intro directamente,
+sin teclear nada, escucharemos el contenido del mensaje en cuesti¢n.
+
+   A continuaci¢n podemos utilizar el mensaje para ser verbalizado si una
+l¡nea viva cambia o si un car cter vivo aparece, que se har  de la
+siguiente manera: al definir una l¡nea viva (o car cter vivo) nos
+pregunta, "Verbalizar l¡nea,  rea o mensaje", si pulsamos Intro quiere
+decir verbalizar l¡nea (la l¡nea actual se entiende), si introducimos nA
+verbalizar  el  rea n (n de 0 a 9) y si introducimos nM entonces
+verbalizar  el mensaje n£mero n.
+
+   Es importante se¤alar que los mensajes son comunes a todos los
+formatos de pantalla de una misma configuraci¢n. Es decir, aunque
+cambiemos de pantalla los mensajes ser n los mismos.
+                                                
+   7.- Nueva gesti¢n de caracteres vivos.
+
+   Se entiende por car cter vivo la detecci¢n de la aparici¢n de un
+car cter concreto en una posici¢n determinada de la pantalla (por
+ejemplo el "mu¤equito" de Reflection). Los pasos a seguir para definirlo
+son los siguientes:
+
+        - Una vez que el mencionado car cter (y/o atributo) est  pintado
+en pantalla, entraremos en revisi¢n y nos posicionaremos sobre ‚l.
+
+        - Pulsamos ALT F6 y a continuaci¢n nos pedir  el n£mero de
+car cter a definir (de 0 a 9, ya que hay hasta diez caracteres vivos por
+formato de pantalla). A continuaci¢n pulsamos Intro. Si lo que
+quisi‚ramos es borrar la definici¢n de ‚se car cter vivo pulsar¡amos
+Suprimir (Sup) en vez de Intro.
+
+        - A continuaci¢n nos dir  "Verbalizar l¡nea,  rea o mensaje" y
+aplicaremos lo propio seg£n el punto anterior.
+
+        - Una vez definido el car cter, debemos poner en marcha el
+sistema de detecci¢n que va junto al de l¡neas vivas, que como sabemos
+es con hotkey-8 en comunicaci¢n.
+
+   Una ventaja que tienen los caracteres vivos es que nos permitir n
+detectar la aparici¢n de determinadas ventanas o mensajes que vayan en
+distintos colores, ya que se detecta tambi‚n la aparici¢n de atributos.
+    
+   8.- Acceso hasta 26 l¡neas de pantalla. 
+
+   Habla por defecto entra con 25 l¡neas aunque podemos cambiar entre 25
+y 26 y vice-versa pulsando ALT F7 en revisi¢n. Con esto podremos acceder
+a la famosa l¡nea 26 de Reflection ¢ de otros programas. 
+    
+   9.- L¡nea de estado secundaria.
+
+   Son muchos los programas que nos proporcionan informaci¢n b sica o de
+"estado" en m s de una l¡nea de pantalla. Por ellos se ha a¤adido una
+segunda l¡nea de estado (secundaria) que se define con ALT F8 en
+revisi¢n. Para verbalizarla pulsaremos hotkey-M" en comunicaci¢n.
+
+   Por defecto, la l¡nea secundaria es la 25.
+  
+  10.- A veces la funci¢n de hotkey-retroceso para que la siguiente
+pulsaci¢n fuera ignorada por Habla y obtener el car cter deseado por
+teclado, no funcionaba bien. Se ha mejorado la gesti¢n y ahora funciona
+correctamente.
+  
+   11.- Puntuaci¢n para Braille Hablado.
+
+   Ya se puede activar o desactivar la puntuaci¢n para Braille Hablado
+desde Habla con CONTROL F3 en revisi¢n. Por consiguiente quedar 
+guardado en los ficheros de configuraci¢n y no ser  necesario estar
+continuamente entrando en par metros de voz.
+  
+   12.- Mejorada la verbalizaci¢n de caracteres para CiberVoz.
+
+   Si utilizamos Cibervoz, aunque la verbalizaci¢n de signos de
+puntuaci¢n y caracteres especiales est‚ desactivada, ahora si leemos de
+car cter en car cter nos lo verbalizar  aunque sea uno de estos signos.
+Esto evita estar activando y desactivando estos par metros.
+
+
+   13.- Tecla de Formulario.
+
+   Ahora utilizando ALT-F4 en revisi¢n podemos definir la tecla Intro,
+Tabulador o ambas para que se verbalice autom ticamente, una vez
+pulsadas estas teclas, parte de la l¡nea en la que se situar  el cursor
+(se verbaliza desde principio de l¡nea hasta el cursor). Con esto si
+estamos trabajando en aplicaciones que utilizan el Intro o el Tabulador
+para cambiar de campo, no necesitaremos dar a hotkey-
+K para averiguar qu‚ hay en la l¡nea actual.
+
+   Por defecto la tecla de formulario es: "Ninguna".
+     
+   14.- Entrada alternativa en Revisi¢n de Pantalla.
+
+   Siempre que pulsamos hotkey-R para entrar en revisi¢n, Habla comprueba
+una variable del sistema llamada INDOS para ver si podemos "bloquear" el
+programa y que Habla tome el control. A veces, en determinados programas
+la variable INDOS est  err¢neamente activada, o incluso el usuario
+quiere entrar en Revisi¢n a£n corriendo el riesgo de que el equipo se
+quede "colgado". Para estos casos se ha definido la combinaci¢n hotkey-
+Suprimir, que entrar  en revisi¢n sin comprobar la INDOS. Por ejemplo si
+pulsamos esta combinaci¢n aunque la pantalla est‚ haciendo scrolling (a
+mitad de un DIR), podremos entrar en revisi¢n, aunque aumentar  las
+probabilidades de que el equipo quede colgado.
+
+   Para los usuarios de teclado externo la combinaci¢n ser  COR-G COR-D.
+   
+   15.- Mejorada la introducci¢n de cadenas de texto en revisi¢n.
+   
+   Se ha mejorado la gesti¢n cuando se pide una cadena de texto por teclado
+en revisi¢n para b£squeda de texto, definir mensaje, introducir nombre de 
+fichero (grabaci¢n y recuperaci¢n) y definir nombre de pantalla. Ahora se 
+puede ver en pantalla lo que escribimos adem s de poder escucharlo. Tambi‚n
+se pueden utilizar los comandos de comunicaci¢n como hotkey-k mientras se
+introduce el texto.
+

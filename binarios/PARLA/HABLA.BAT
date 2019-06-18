@@ -1,0 +1,3 @@
+@ECHO OFF
+TTSEBOX N C(T ALL) DH
+H5 %1 %2 %3
